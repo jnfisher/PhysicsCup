@@ -8,38 +8,42 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
+    var sounds = [SKAction.playSoundFileNamed("small-bell-ring-01a.wav", waitForCompletion:true)]
+    var lastTime = NSTimeInterval()
+    var canPlaySound = false, shouldPlaySound = false
+    
     override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!";
-        myLabel.fontSize = 65;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        self.physicsWorld.contactDelegate = self
+        self.physicsWorld.gravity = CGVectorMake(0.0, -4.9)
         
-        self.addChild(myLabel)
+        let sprite = SKSpriteNode(imageNamed: "arrow.png")
+        sprite.xScale = 0.15
+        sprite.yScale = 0.15
+        sprite.name = "arrow"
+        sprite.position = CGPointMake(self.frame.size.width/8.0, self.frame.size.height/8.0)
+        self.addChild(sprite)
+
+        sprite.runAction(SKAction.rotateByAngle(CGFloat(M_PI_2), duration: 0))
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        /* Called when a touch begins */
-        
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         for touch: AnyObject in touches {
-            let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
+            let sprite = StarNode.star(touch.locationInNode(self))
             self.addChild(sprite)
         }
     }
    
     override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
+        self.canPlaySound = currentTime - self.lastTime > 0.1
+        if (self.canPlaySound && self.shouldPlaySound) {
+            self.runAction(sounds[0])
+            self.lastTime = currentTime
+            self.shouldPlaySound = false
+        }
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact!) {
+        self.shouldPlaySound = (contact.bodyA.node?.name == "star" && contact.bodyB.node?.name == "star")
     }
 }

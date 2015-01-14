@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		883417EE1A327CFF002C5324 /* StarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883417ED1A327CFF002C5324 /* StarNode.swift */; };
+		883417F21A329522002C5324 /* small-bell-ring-01a.wav in Resources */ = {isa = PBXBuildFile; fileRef = 883417F11A329522002C5324 /* small-bell-ring-01a.wav */; };
+		883417F41A335A69002C5324 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 883417F31A335A69002C5324 /* arrow.png */; };
 		885D7C931A3244DB0075E808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885D7C921A3244DB0075E808 /* AppDelegate.swift */; };
 		885D7C951A3244DB0075E808 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 885D7C941A3244DB0075E808 /* GameScene.sks */; };
 		885D7C971A3244DB0075E808 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885D7C961A3244DB0075E808 /* GameScene.swift */; };
@@ -28,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		883417ED1A327CFF002C5324 /* StarNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarNode.swift; sourceTree = "<group>"; };
+		883417F11A329522002C5324 /* small-bell-ring-01a.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "small-bell-ring-01a.wav"; sourceTree = "<group>"; };
+		883417F31A335A69002C5324 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		885D7C8D1A3244DB0075E808 /* PhysicsCup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhysicsCup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		885D7C911A3244DB0075E808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		885D7C921A3244DB0075E808 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,7 +93,10 @@
 				885D7C981A3244DB0075E808 /* GameViewController.swift */,
 				885D7C9A1A3244DB0075E808 /* Main.storyboard */,
 				885D7C9D1A3244DB0075E808 /* Images.xcassets */,
+				883417F11A329522002C5324 /* small-bell-ring-01a.wav */,
 				885D7C9F1A3244DB0075E808 /* LaunchScreen.xib */,
+				883417F31A335A69002C5324 /* arrow.png */,
+				883417ED1A327CFF002C5324 /* StarNode.swift */,
 				885D7C901A3244DB0075E808 /* Supporting Files */,
 			);
 			path = PhysicsCup;
@@ -200,7 +209,9 @@
 			files = (
 				885D7CA11A3244DB0075E808 /* LaunchScreen.xib in Resources */,
 				885D7C9E1A3244DB0075E808 /* Images.xcassets in Resources */,
+				883417F21A329522002C5324 /* small-bell-ring-01a.wav in Resources */,
 				885D7C951A3244DB0075E808 /* GameScene.sks in Resources */,
+				883417F41A335A69002C5324 /* arrow.png in Resources */,
 				885D7C9C1A3244DB0075E808 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				885D7C971A3244DB0075E808 /* GameScene.swift in Sources */,
+				883417EE1A327CFF002C5324 /* StarNode.swift in Sources */,
 				885D7C991A3244DB0075E808 /* GameViewController.swift in Sources */,
 				885D7C931A3244DB0075E808 /* AppDelegate.swift in Sources */,
 			);
@@ -415,6 +427,7 @@
 				885D7CB21A3244DC0075E808 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		885D7CB31A3244DC0075E808 /* Build configuration list for PBXNativeTarget "PhysicsCupTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +436,7 @@
 				885D7CB51A3244DC0075E808 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

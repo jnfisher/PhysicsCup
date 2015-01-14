@@ -27,6 +27,28 @@ extension SKNode {
 
 class GameViewController: UIViewController {
 
+    var lastRotation = CGFloat(0.0)
+    
+    
+    @IBAction func rotationGestured(sender: UIRotationGestureRecognizer) {
+        if(sender.state == UIGestureRecognizerState.Ended) {
+            lastRotation = 0.0;
+            return
+        }
+        
+        var rotation = 0.0 - (sender.rotation - lastRotation)
+        var trans = CGAffineTransformMakeRotation(rotation)
+        
+        let skView = self.view as SKView
+        if let skScene = skView.scene {
+            var newGravity = CGPointApplyAffineTransform(CGPointMake(skScene.physicsWorld.gravity.dx, skScene.physicsWorld.gravity.dy), trans)
+            skScene.physicsWorld.gravity = CGVectorMake(newGravity.x, newGravity.y)
+            skScene.childNodeWithName("arrow")?.runAction(SKAction.rotateByAngle(rotation, duration: 0.1))
+        }
+        
+        lastRotation = sender.rotation
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,7 +62,7 @@ class GameViewController: UIViewController {
             skView.ignoresSiblingOrder = true
             
             /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .AspectFill
+            scene.scaleMode = .AspectFit
             
             skView.presentScene(scene)
         }
